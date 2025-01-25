@@ -1,0 +1,568 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+ul {
+    list-style: none;
+}
+
+.center-head li, .topics li {
+    float: left;
+}
+
+.center-head a {
+    text-decoration: none;
+    color: white;
+}
+
+.center-head a:hover {
+    color: rgba(57, 121, 139, 1);
+}
+
+.right-head i {
+    font-size: x-large;
+    margin-right: 20px;
+    border-radius: 30px;
+    background-color: white;
+    padding: 6px;
+    width: fit-content;
+    color: rgba(99, 122, 141, 1);
+}
+
+.header {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 1px 0 1px white;
+}
+
+.center-head {
+    margin: auto;
+}
+
+.left-head {
+    padding-left: 20px;
+    font-size: x-large;
+    color: black;
+}
+
+.b {
+    border-style: none;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    background-color: rgba(140, 206, 195, 1);
+    margin-left: 5px;
+}
+
+.below {
+    display: flex; 
+    align-items: center;
+    justify-content: baseline;
+}
+
+.space-around {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    bottom: 10px;
+}
+
+.below i, .below p {
+    margin-right: 10px;
+}
+
+.below i {
+    font-size: x-small;
+    padding: 5px;
+    background-color: rgba(127, 208, 199, 1);
+    border-radius: 20px;
+}
+
+:root {
+    --color: #17597c, #2d6e8a, #3b7f94, #4f96a2, #498e9d, #4b939f, #4b909f;
+}
+
+.hero {
+    padding-bottom: 50px;
+    border-radius: 0 0 5% 5%;
+    background: linear-gradient(var(--color) 60%, #82cfc7 40%);
+}
+
+.content {
+    max-width: 60%;
+    margin: auto;
+    text-align: center;
+    margin-top: 80px;
+    line-height: 1.6;
+}
+
+.pa1 {
+    font-size: 50px;
+    color: white;
+    font-weight: bolder;
+}
+
+.pa2 {
+    font-size: large;
+    color: #1f627e;
+}
+
+.submit {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.nosubmit {
+    width: 90%;
+    border: none;
+    padding: 9px 4px 9px;
+}
+
+button[type=submit] {
+    color: white;
+    background-color: rgba(130, 207, 199, 255);
+    border-radius: 50px;
+    padding: 10px 20px 10px;
+    border: none;
+    text-align: center;
+}
+
+.center-pages {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: auto;
+    column-gap: 30px;
+    margin-top: 50px;
+}
+
+.part1, .part3 { 
+    background-color: white;
+    padding: 25px;
+    border-radius: 20px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.part3 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    
+    height: auto;
+}
+
+.part1 > p, .part2 > p, .part3 > p {
+    width: 80%;
+    text-align: left;
+}
+
+.corner {
+    background-color: #03b0f9;
+    border-radius: 4px;
+    padding: 2px;
+    color: white;
+    font-size: small;
+}
+
+.part2 {  
+    padding: 25px;
+    border-radius: 20px;
+    background: linear-gradient(rgba(131, 195, 194, 0.9), rgba(79, 136, 155, 0.8)), url("images/businesswoman-using-tablet-analysis.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.img1 {
+    padding-left: 20px;
+    margin: auto;
+}
+
+.part2 p, .part2 h4 {
+    color: rgb(255, 255, 255);
+}
+
+.align-things {
+    display: flex;
+    justify-content: space-between;
+}
+
+.browse-section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    height: auto;
+    width: 100%;
+}
+
+.boxes {
+    max-width: fit-content;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.topics {
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-bottom: 1px rgb(230, 230, 230) solid;
+}
+
+.topics li {
+    float: left;
+    padding: 10px;
+}
+
+.topics a {
+    text-decoration: none;
+    color: gray;
+}
+
+.topics a:hover {
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+}
+
+.icon {
+    border-radius: 50px;
+    background: lightblue;
+    width: fit-content;
+    padding: 5px;
+    margin-right: 20px;
+}
+
+.icon i {
+    border: 3px solid white;
+    border-radius: 50px;
+    padding: 5px;
+    color: white;
+}
+
+.data-of-third {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+.first-box-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.data-of-third h1 {
+    color: white;
+    margin-bottom: 30px;
+    margin-top: 60px;
+}
+
+.data-of-third .b1 {
+    border-color: rgba(140, 206, 195, 1);
+    background-color: transparent;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    color: rgba(140, 206, 195, 1);
+}
+
+.how-works {
+    background: linear-gradient(rgba(120, 183, 175, 0.8), rgba(80, 132, 140, 0.85)), url("images/colleagues-working-cozy-office-medium-shot.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    color: white;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.first-box {
+    text-align: justify;
+    line-height: 1.5em;
+}
+
+.partition {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.partition2 {
+    width: 300px;
+}
+
+#menu-icon {
+    border-style: none;
+    padding: 10px;  
+    color: black;
+    background: none;
+    font-weight: 550;
+}
+
+.dropdown1 {
+    margin-bottom: 5px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(231, 241, 253, 1);
+    border-radius: 20px;
+}
+
+.dropdown1 i {
+    color: rgba(29, 82, 123, 1);
+    padding-right: 5px;
+}
+
+.dropdown2 p {
+    color: gray;
+    margin: 10px;
+    font-size: smaller;
+}
+
+.partition-loc {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    align-items: center;
+    justify-content: center;
+}  
+
+.partition-loc1 {
+    background-size: cover;
+}
+
+.partition-loc2 {
+    width: 200px;
+}
+
+.img2 {
+    border-radius: 20px;
+}
+
+.location h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.location {
+    background-color: rgba(240, 247, 253, 1);
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.faq h1 {
+    width: 300px;
+    margin-top: 20px;
+    padding-left: 20px;
+} 
+
+.footer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background: linear-gradient(155deg, white 89%, #82cfc7 26%);
+}
+
+.back-ground {
+    background-color: #82cfc7;
+    padding-bottom: 5px;
+    height: auto;
+}
+
+.p2 a, .p3 p {
+    text-decoration: none;
+    color: #82cfc7;
+}
+
+.p1, .p2, .p3, .p4 {
+    margin-top: 40px;
+    line-height: 1.5rem;
+}
+
+.p2 p, .p3 p, .p4 p {
+    font-size: x-small;
+}
+
+.p4 button {
+    background-color: #82cfc7;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.img1, .img2 {
+    overflow: hidden;
+}
+
+@media (max-width: 450px) {
+    .none1 {
+        display: none;
+    }
+    
+    .header {
+        justify-content: space-between;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .left-head {
+        font-size: medium;
+    }
+
+    .center-head > ul > li > a {
+        font-size: x-small;
+        padding-right: 5px;
+    }
+
+    .right-head i {
+        font-size: medium;
+        margin-right: 10px;
+        border-radius: 15px;
+        padding: 4px;
+    }
+
+    .pa1 {
+        font-size: larger;
+    }
+    .pa2 {
+        font-size: medium;
+    }
+
+    .center-pages {
+        flex-wrap: wrap;
+    }
+
+    .part2 {
+        height: 350px;
+    }
+
+    .boxes {
+        grid-template-columns: auto;
+        width: 60%;
+        margin: auto;
+    }
+
+    .part1 > p, .part2 > p, .part3 > p {
+        font-size: small;
+    }
+
+    .how-works h1, .browse-section h1, .faq h1, .location h1 {
+        font-size: large;
+    }
+
+    .topics {
+        font-size: smaller;
+    }
+
+    .first-box, .data-of-third p {
+        font-size: small;
+    }
+
+    .footer {
+        font-size: small;
+        display: block;
+        margin-top: 0;
+    }
+
+    .p1, .p2, .p3, .p4 {
+        line-height: 1 rem;
+        padding-left: 10px;
+    }
+
+    .img2 {
+        width: 100%;
+        height: auto;
+        background-size: cover;
+    }
+
+    .first-box {
+        line-height: 1.3em;
+    }
+
+    .partition-loc, .partition {
+        flex-direction: column;
+        row-gap: 20px;
+    } 
+
+    .hero {
+        border-radius: 0 0 6% 6%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .boxes {
+        grid-template-columns: auto auto;
+        width: 70%;
+        margin: auto;
+    }
+
+    .left-head {
+        font-size: large;
+    }
+
+    .center-head > ul > li > a {
+        font-size: small;
+        padding-right: 7px;
+    }
+
+    .right-head i {
+        font-size: medium;
+        margin-right: 10px;
+        border-radius: 15px;
+        padding: 4px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .center-head > ul > li > a {
+        font-size: small;
+        padding-right: 10px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .boxes {
+        grid-template-columns: auto auto auto;
+    }
+
+    .center-head > ul > li > a {
+        font-size: small;
+        padding-right: 15px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {...} */
