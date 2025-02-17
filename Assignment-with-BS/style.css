@@ -1,0 +1,35 @@
+@font-face { 
+    font-family: 'Topic-fonts';
+    src : url("fonts/bootstrap-icons.woff") format('woff');
+    src: url("fonts/bootstrap-icons.woff2") format('woff');
+    font-style: normal; 
+ } 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Topic-fonts', Roboto;
+}
+#second-div {
+    background: linear-gradient(rgba(131,195,194,0.6), rgba(79,136,155,0.6)), url("images/businesswoman-using-tablet-analysis.jpg") no-repeat ;
+    background-size: cover;
+    height: 330px;
+}
+:root
+{
+    --color : #17597c,#2d6e8a, #3b7f94,#4f96a2, #498e9d, #4b939f , #4b909f;
+}
+nav {
+    background :    linear-gradient( to right, var(--color));
+}
+#hero  {
+    background :     linear-gradient(var(--color) 40%, #82cfc7 60%);
+    border-radius: 0 0 5% 5%;
+}
+#how-works {
+    background: linear-gradient(rgba(131,195,194,0.6), rgba(79,136,155,0.6)), url("images/colleagues-working-cozy-office-medium-shot.jpg") no-repeat;
+    background-size: cover;
+}
+#footer {
+    background  : linear-gradient(155deg, white 89%, #82cfc7 26%);
+}
