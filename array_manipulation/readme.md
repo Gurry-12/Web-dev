@@ -5,7 +5,7 @@ This folder contains examples of various array manipulation techniques in JavaSc
 ## Files
 
 - `index.html`: The HTML file that includes the script and displays the results.
-- `script.js`: The JavaScript file that contains the array manipulation code.
+- `array.js`: The JavaScript file that contains the array manipulation code.
 
 ## How to Run
 
