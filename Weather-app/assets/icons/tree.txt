@@ -1,0 +1,65 @@
+Folder PATH listing for volume gurii's_disk
+Volume serial number is ECE1-D1CE
+D:.
+|   cloudy-day-1.svg
+|   LICENSE
+|   tree.txt
+|   
++---animated
+|       cloudy-day-1.svg
+|       cloudy-day-2.svg
+|       cloudy-day-3.svg
+|       cloudy-night-1.svg
+|       cloudy-night-2.svg
+|       cloudy-night-3.svg
+|       cloudy.svg
+|       day.svg
+|       night.svg
+|       rainy-1.svg
+|       rainy-2.svg
+|       rainy-3.svg
+|       rainy-4.svg
+|       rainy-5.svg
+|       rainy-6.svg
+|       rainy-7.svg
+|       snowy-1.svg
+|       snowy-2.svg
+|       snowy-3.svg
+|       snowy-4.svg
+|       snowy-5.svg
+|       snowy-6.svg
+|       thunder.svg
+|       weather-sprite.svg
+|       weather.svg
+|       weather_sagittarius.svg
+|       weather_sunset.svg
+|       
+\---static
+        cloudy-day-1.svg
+        cloudy-day-2.svg
+        cloudy-day-3.svg
+        cloudy-night-1.svg
+        cloudy-night-2.svg
+        cloudy-night-3.svg
+        cloudy.svg
+        day.svg
+        night.svg
+        rainy-1.svg
+        rainy-2.svg
+        rainy-3.svg
+        rainy-4.svg
+        rainy-5.svg
+        rainy-6.svg
+        rainy-7.svg
+        snowy-1.svg
+        snowy-2.svg
+        snowy-3.svg
+        snowy-4.svg
+        snowy-5.svg
+        snowy-6.svg
+        thunder.svg
+        weather-sprite.svg
+        weather.svg
+        weather_sagittarius.svg
+        weather_sunset.svg
+        

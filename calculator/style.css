@@ -1,55 +1,178 @@
-.main {
-    height: fit-content;
-    width : 400px;
-    margin-top: 20px;
+:root {
+    --bg-color: #f0f2f5;
+    --calc-bg: #ffffff;
+    --display-bg: #f8f9fa;
+    --text-color: #212529;
+    --btn-bg: #e9ecef;
+    --btn-hover-bg: #dee2e6;
+    --op-btn-color: #fd7e14;
+    --equal-btn-bg: #fd7e14;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme='dark'] {
+    --bg-color: #1a1b1e;
+    --calc-bg: #222429;
+    --display-bg: #2a2d32;
+    --text-color: #ffffff;
+    --btn-bg: #2a2d32;
+    --btn-hover-bg: #3c3f46;
+    --op-btn-color: #ff9f0a;
+    --equal-btn-bg: #ff9f0a;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease;
+}
+
+.calculator-container {
+    width: 100%;
+    max-width: 360px;
+    background-color: var(--calc-bg);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 25px;
+    transition: background-color 0.3s ease;
+}
+
+/* Display */
+.display {
+    background-color: var(--display-bg);
+    color: var(--text-color);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: right;
     margin-bottom: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
-#result {
-  font-size: x-large;
-  height : 50px;
+.previous-operand {
+    min-height: 24px;
+    font-size: 1rem;
+    color: #adb5bd;
 }
 
+.current-operand {
+    font-size: 2.5rem;
+    font-weight: 500;
+    min-height: 50px;
+}
+
+/* Buttons */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+button {
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    cursor: pointer;
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: var(--btn-hover-bg);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+.btn-op {
+    color: var(--op-btn-color);
+    font-weight: 500;
+}
+
+.btn-equal {
+    grid-column: span 1; /* Spans 1 column */
+    background-color: var(--equal-btn-bg);
+    color: #ffffff;
+}
+
+.btn-equal:hover {
+    opacity: 0.9;
+}
+
+/* Footer Controls */
+.footer-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.footer-btn {
+    background: none;
+    color: #adb5bd;
+    font-size: 1.2rem;
+}
+
+/* Sidenav History Panel */
 .sidenav {
     height: 100%;
     width: 0;
-    position : absolute;
-    top: 0;
-    left : 0;
+    position: fixed;
     z-index: 1;
-    background-color: #111;
-    opacity: 80%;
+    top: 0;
+    left: 0;
+    background-color: var(--calc-bg);
+    box-shadow: var(--shadow);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-  }
-  
-  .sidenav a {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidenav h3 {
     padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
-  .sidenav .closebtn {
+    color: var(--text-color);
+}
+
+.sidenav .closebtn {
     position: absolute;
-    top: 0;
+    top: 15px;
     right: 25px;
     font-size: 36px;
-    margin-left: 50px;
-  }
+    text-decoration: none;
+    color: #adb5bd;
+}
 
-  #pre p {
-    padding-left: 10px;
-  }
+#history-content {
+    padding: 0 32px;
+    color: var(--text-color);
+    flex-grow: 1;
+}
 
-  button:hover {
-    box-shadow: 1px 1px 1px black;
-  }
-  
+#history-content p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--btn-bg);
+    padding-bottom: 5px;
+}
+
+#clear-history {
+    margin: 32px;
+    background-color: var(--op-btn-color);
+    color: white;
+}

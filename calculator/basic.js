@@ -1,204 +1,172 @@
-let operator_value;
-let pre_value = [];
-let x = ""; // Initialize x for storing the current expression.
-let display_x = "";
-let bool_1 = false;
-let solution;
-let historyItem;
-let openParenthesesCount =0;
-let point_counter = false;
+document.addEventListener('DOMContentLoaded', function() {
+    const currentOperandEl = document.querySelector('.current-operand');
+    const previousOperandEl = document.querySelector('.previous-operand');
+    const buttonsGrid = document.querySelector('.buttons-grid');
+    
+    // Sidenav History Elements
+    const historyToggle = document.getElementById('history-toggle');
+    const historyPanel = document.getElementById('history-panel');
+    const closeHistoryBtn = document.querySelector('.sidenav .closebtn');
+    const historyContent = document.getElementById('history-content');
+    const clearHistoryBtn = document.getElementById('clear-history');
 
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
 
-function output() {
-    if (bool_1) {
-        try {
-            let expression = x
-                .replace(/\(?(\d+(\.\d+)?)\)?%\(?(\d+(\.\d+)?)\)?/g, "($1*$3)/100")
-                .replace(/(\d+(\.\d+)?)%/g, "($1/100)")
-                .replace(/\)(?=\d)/g, ")*"); 
-            console.log(expression)// Fix: Insert '*' after closing parenthesis when followed by a number
+    let currentExpression = '';
+    let displayExpression = '';
+    let history = [];
 
-            solution = eval(expression); // Evaluate modified expression
-            document.getElementById("result").value = solution;
-            bool_1 = false;
-            point_counter=false;
-            // Store history as "1+2 = 3"
-            historyItem = `${display_x} = ${solution}`;
-            pre_value.push(historyItem);
-            x = solution.toString(); // Set x to the result for further calculations
-            display_x = solution.toString(); // Update display_x as well
-        } catch (e) {
-            document.getElementById("result").value = "Error";
-            x = "";
-            display_x = "";
-        }
-    } else {
-        if (x.length === 0) {
-            document.getElementById("result").value = 0;
+    // --- Core Calculator Logic ---
+    
+    const updateDisplay = () => {
+        currentOperandEl.textContent = displayExpression || '0';
+        previousOperandEl.textContent = ''; // Can be used for more complex logic later
+    };
+
+    const clear = () => {
+        currentExpression = '';
+        displayExpression = '';
+        updateDisplay();
+    };
+
+    const deleteLast = () => {
+        displayExpression = displayExpression.slice(0, -1);
+        
+        // Handle backend expression carefully
+        const lastChar = currentExpression.slice(-1);
+        if (lastChar === ' ') {
+            currentExpression = currentExpression.slice(0, -3); // " * "
         } else {
-            if( x.match(/\((\d+)[+\-*\/]?(\d+)?/)){
-                x = x.replace(/\)(?=\d)/g, ")*");
-            }
-            try {
-                solution = eval(x); // Evaluate the expression
-                document.getElementById("result").value = solution;
-                point_counter=false;
-                // Store history as "1+2 = 3"
-                historyItem = `${display_x} = ${solution}`;
-                pre_value.push(historyItem);
-                x = solution.toString(); // Set x to the result for further calculations
-                display_x = solution.toString(); // Update display_x as well
-            } catch (e) {
-                document.getElementById("result").value = "Error";
-                x = "";
-                display_x = "";
-            }
+            currentExpression = currentExpression.slice(0, -1);
         }
-    }
-}
+        updateDisplay();
+    };
 
+    const appendNumber = (number) => {
+        if (number === '.' && displayExpression.split(/[\+\-\×\÷\(\)]/).pop().includes('.')) return;
+        displayExpression += number;
+        currentExpression += number;
+        updateDisplay();
+    };
+    
+    const chooseOperator = (op) => {
+        // Prevent adding operator if expression is empty or ends with an operator
+        if (currentExpression === '' || /[\+\-\*\/\s]$/.test(currentExpression)) return;
+        
+        displayExpression += op;
+        currentExpression += ` ${op.replace('×', '*').replace('÷', '/')} `;
+        updateDisplay();
+    };
 
-function history_1() {
-    let preElement = document.getElementById("pre");
+    const handleParenthesis = (p) => {
+        displayExpression += p;
+        currentExpression += p;
+        updateDisplay();
+    };
 
-    // Clear any existing content in the "pre" element
-    preElement.innerHTML = '';
-    // Loop through the array and append each item as a paragraph
-    for (let i = pre_value.length - 1; i >= 0; i--) {
-        let p = document.createElement("p");
-        p.innerText = pre_value[i];
-        preElement.appendChild(p);
-    }
-}
+    const calculate = () => {
+        if (!currentExpression) return;
+        try {
+            // A safer alternative to eval()
+            const result = new Function('return ' + currentExpression.replace(/--/g, '+'))();
+            if (isNaN(result) || !isFinite(result)) {
+                throw new Error("Invalid calculation");
+            }
+            
+            const calculationRecord = `${displayExpression} = ${result}`;
+            history.unshift(calculationRecord); // Add to beginning of array
+            updateHistory();
+            
+            displayExpression = result.toString();
+            currentExpression = result.toString();
+            updateDisplay();
 
-
-//clear all at time 
-function clear() {
-    if (x.length === 0) {
-        document.getElementById("result").value = 0;
-    }
-    else {
-    document.getElementById("result").value ="";
-    x = "";
-    display_x = "";
-    }
-}
-
-//clear sigle digit at a time
-function back_1() {
-    if (x.length === 0) {
-        document.getElementById("result").value = 0;
-    }
-    else{
-    x = x.substring(0,x.length - 1);
-    display_x = display_x.substring(0,display_x.length - 1);
-    document.getElementById("result").value = display_x;
-    }
-
-}
-
-function delete_1() {
-    pre_value=[];
-    document.getElementById("pre").innerHTML = "";
-}
-
-//Queryloop for selection of number
-// Query loop for number & operator selection
-document.querySelectorAll(".box").forEach((box) => {
-    box.addEventListener("click", function (event) {
-        let key = event.target.innerHTML;
-
-        // Handle number inputs
-        if (event.target.classList.contains("number")) {
-            x += key;
-            display_x += key;
-            document.getElementById("result").value = display_x;
+        } catch (error) {
+            currentOperandEl.textContent = 'Error';
+            previousOperandEl.textContent = '';
+            currentExpression = '';
+            displayExpression = '';
+            console.error("Calculation Error:", error);
         }
+    };
 
-        // Handle operator inputs
-        if (event.target.classList.contains("operators")) {
-            operator_value = key;
+    // --- Event Handling ---
 
-            if(operator_value==="%"){
-                bool_1=true;
-            }            
+    buttonsGrid.addEventListener('click', (event) => {
+        const target = event.target.closest('button');
+        if (!target) return;
 
-            // Handle opening bracket `(`
-            if (operator_value === "(") {
-                if(openParenthesesCount >=0){
-                    if (x.length > 0 && x[x.length - 1].match(/[0-9)]/)) {
-                        x += "*(";  // Implicit multiplication added in the background
-                        display_x += "("; // Only show `(` on screen
-                    } else {
-                        x += "(";
-                        display_x += "(";
-                    }
-                    openParenthesesCount++;
-                    document.getElementById("result").value = display_x;
-                }
-                return;
-            }
-
-            if (operator_value === ")") {
-                if (openParenthesesCount > 0 && x[x.length - 1].match(/[0-9)]/)) {
-                    x += ")";
-                    display_x += ")";
-                    openParenthesesCount--; // Decrement the open parentheses counter
-                    document.getElementById("result").value = display_x;
-                }
-                return;
-            }
-
-            // Prevent consecutive operators (`++`, `--`, `**`, etc.)
-            if (x.length > 0 && x[x.length - 1].match(/[+\-*/%]/)) {
-                x = x.slice(0, -1);
-                display_x = display_x.slice(0, -1);
-            }
-
-                x += operator_value;
-                display_x+=operator_value;
-                document.getElementById("result").value = display_x; 
-
-        }
-
-        if (event.target.classList.contains("pointer")) {
-
-            if(x.length === 0 || x[x.length-1].match(/[+/-/*%]/)){
-                let digit = "0"+key;
-                x+=digit;
-                display_x+=digit;
-                document.getElementById("result").value = display_x;
-
-            }
-            else {
-            x+=key;
-            display_x+=key;
-            document.getElementById("result").value = display_x;
-            }
+        const action = target.dataset.action;
+        const value = target.textContent;
+        
+        if (target.classList.contains('btn-num')) {
+            appendNumber(value);
+        } else if (action === 'operator') {
+            chooseOperator(value);
+        } else if (action === 'parenthesis') {
+            handleParenthesis(value);
+        } else if (action === 'clear') {
+            clear();
+        } else if (action === 'delete') {
+            deleteLast();
+        } else if (action === 'equals') {
+            calculate();
         }
     });
+
+    // --- History Panel Logic ---
+
+    const updateHistory = () => {
+        if (history.length === 0) {
+            historyContent.innerHTML = '<p>No calculations yet.</p>';
+        } else {
+            historyContent.innerHTML = history.map(item => `<p>${item}</p>`).join('');
+        }
+    };
+
+    historyToggle.addEventListener('click', () => {
+        historyPanel.style.width = '280px';
+    });
+
+    closeHistoryBtn.addEventListener('click', () => {
+        historyPanel.style.width = '0';
+    });
+
+    clearHistoryBtn.addEventListener('click', () => {
+        history = [];
+        updateHistory();
+    });
+
+    // --- Theme Toggler ---
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    });
+    
+    // --- Keyboard Support ---
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key >= 0 && e.key <= 9 || e.key === '.') appendNumber(e.key);
+        if (e.key === 'Enter' || e.key === '=') {
+            e.preventDefault(); // Prevent form submission behavior
+            calculate();
+        }
+        if (e.key === 'Backspace') deleteLast();
+        if (e.key === 'Escape') clear();
+        if (e.key === '+') chooseOperator('+');
+        if (e.key === '-') chooseOperator('-');
+        if (e.key === '*') chooseOperator('×');
+        if (e.key === '/') chooseOperator('÷');
+        if (e.key === '(' || e.key === ')') handleParenthesis(e.key);
+    });
+
+    // Initialize
+    updateDisplay();
+    updateHistory();
 });
-
-
-//! x.match(/(\d+)?(\.)(\d+)?/) )
-
-//call for output
-document.getElementById("equal").addEventListener("click" , output);
-
-//call for all clear
-document.getElementById("all-clear").addEventListener("click" , clear);
-
-//call for single clear at a time 
-document.getElementById("clear").addEventListener("click" , back_1);
-
-//history
-document.getElementById("history").addEventListener("click" , history_1);
-document.getElementById("delete").addEventListener("click" , delete_1);
-
-function openNav() {
-    document.getElementById("mySidenav").style.width = "200px";
-  }
-  
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-  }

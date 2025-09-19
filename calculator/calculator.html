@@ -1,83 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Aesthetic Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Calculator</title>
 </head>
-
-<body style="background-color: rgb(243, 243, 243, 0.6);">
-   
-<div class="main container shadow shadow mx-auto py-2 bg-secondary position-relative  ">
-    <button type="button" id="history" onclick="openNav()" class="bg-transparent btn"><i class="fa-solid fa-clock-rotate-left text-white"></i></button>
-    <h1 class="text-center text-white my-4">Calculator</h1>
-    
-    <div  class="row bg-danger rounded-3 p-2 mx-1 fs-1  text-white" >
-    <input type="text" name="" id="result"  class = "d-flex align-items-end justify-content-end text-end border-0 rounded-2">
-    </div>
-
-    <div class="box row  py-1 px-1 pt-4 " >
-        <div  class="col"><button class="operators p-3 bg-warning d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">(</button></div>
-        <div  class="col"><button class="operators p-3 bg-warning d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">)</button></div>
-        <div  class="col-3"><button class="operators p-3 bg-warning d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">%</button></div>
-        <div  class="col"><button id="clear" class=" p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button"><i class="fa-solid fa-delete-left py-1"></i></button></div>
-
-    </div>
-
-    <div class=" box row  py-1 px-1 " >
-        <div  class="col "><button class="number p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">9</button></div>
-        <div  class="col"><button class="number p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">8</button></div>
-        <div  class="col"><button class="number p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">7</button></div>
-        <div  class="col"><button class="operators p-3 bg-warning d-flex justify-content-center btn btn-primary fs-5 w-100" type="button">/</button></div>
-        
-    </div>
-    <div class=" box row  py-1 px-1 " >
-        <div  class="col"><button class="number p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">6</button></div>
-        <div  class="col"><button class="number p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">5</button></div>        
-        <div  class="col"><button class="number p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">4</button></div>        
-        <div  class="col"><button class="operators p-3 bg-warning d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">*</button></div>
-    </div> 
-
-    <div class="box row  py-1 px-1 " >
-        <div  class="col"><button class="number p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">3</button></div>
-        <div  class="col"><button class="number p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">2</button></div>
-        <div  class="col"><button class="number p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">1</button></div>
-        <div  class="col"><button class="operators p-3 bg-warning d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">-</button></div>
-    </div>
-    <div class="box row  py-1 px-1 " >
-        <div  class="col-6"><button class="number p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">0</button></div>
-        <div  class="col"><button class="pointer p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">.</button></div>
-        <div  class="col"><button class="operators p-3 bg-warning d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">+</button></div>
-    </div>
-    <div class="box row  py-1 px-1 " >
-        <div  class="col-6"><button id="all-clear" class="p-3 bg-info d-flex justify-content-center btn btn-primary w-100 fs-5  " type="button">AC</button></div>
-        <div  class="col-6"><button id="equal" class="p-3 bg-success opacity-75 d-flex justify-content-center btn btn-primary w-100 fs-5 " type="button">=</button></div>
-    </div>
-    
-
-    <div id="mySidenav" class="sidenav">
-        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
-        <p class="text-white text-center">History</p>
-        <div id="pre" class="transparent bg-dark opacity-50 text-white  py-3 my-2 mx-1 d-flex flex-column  rounded-3 ">
+<body>
+    <div class="calculator-container">
+        <div class="display">
+            <div class="previous-operand"></div>
+            <div class="current-operand">0</div>
         </div>
 
-        <div class="position-absolute bottom-0 translate-middle start-50"><button id="delete" type="button" class=" p-2 bg-primary opacity-50 d-flex justify-content-center btn btn-primary w-100 ">Delete</button></div>
+        <div class="buttons-grid">
+            <button class="btn-op" data-action="clear">AC</button>
+            <button class="btn-op" data-action="parenthesis">(</button>
+            <button class="btn-op" data-action="parenthesis">)</button>
+            <button class="btn-op" data-action="delete"><i class="fa-solid fa-delete-left"></i></button>
+            
+            <button class="btn-num">7</button>
+            <button class="btn-num">8</button>
+            <button class="btn-num">9</button>
+            <button class="btn-op" data-action="operator">÷</button>
+            
+            <button class="btn-num">4</button>
+            <button class="btn-num">5</button>
+            <button class="btn-num">6</button>
+            <button class="btn-op" data-action="operator">×</button>
+
+            <button class="btn-num">1</button>
+            <button class="btn-num">2</button>
+            <button class="btn-num">3</button>
+            <button class="btn-op" data-action="operator">-</button>
+            
+            <button class="btn-num">0</button>
+            <button class="btn-num">.</button>
+            <button class="btn-equal" data-action="equals">=</button>
+            <button class="btn-op" data-action="operator">+</button>
+        </div>
         
-      </div>
+        <div class="footer-controls">
+            <button id="history-toggle" class="footer-btn"><i class="fa-solid fa-clock-rotate-left"></i></button>
+            <button id="theme-toggle" class="footer-btn"><i class="fa-solid fa-circle-half-stroke"></i></button>
+        </div>
+    </div>
 
-</div>
+    <div id="history-panel" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
+        <h3>History</h3>
+        <div id="history-content">
+            <p>No calculations yet.</p>
+        </div>
+        <button id="clear-history">Clear History</button>
+    </div>
 
-
-<script src="basic.js"></script>
-
+    <script src="basic.js"></script>
 </body>
 </html>
-
-

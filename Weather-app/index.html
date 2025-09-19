@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-container">
+        <header class="header">
+            <div class="search-bar">
+                <input type="text" id="city-input" placeholder="Enter city name...">
+                <button id="search-btn">Search</button>
+            </div>
+            <button id="location-btn">Use Current Location</button>
+        </header>
+
+        <main class="main-content" id="weather-display">
+            <section class="current-weather-card">
+                <div class="card-header">
+                    <h2 id="city-name">City Name</h2>
+                    <p id="current-date">Date</p>
+                </div>
+                <div class="card-body">
+                    <div class="temperature">
+                        <img id="current-weather-icon" src="" alt="Weather Icon">
+                        <span id="current-temp">--°C</span>
+                    </div>
+                    <p id="current-weather-desc">Weather Description</p>
+                </div>
+                <div class="card-footer">
+                    <div>
+                        <p>Feels Like</p>
+                        <strong id="feels-like">--°C</strong>
+                    </div>
+                    <div>
+                        <p>Humidity</p>
+                        <strong id="humidity">--%</strong>
+                    </div>
+                    <div>
+                        <p>Wind Speed</p>
+                        <strong id="wind-speed">-- m/s</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="forecast-section">
+                <h3>5-Day Forecast</h3>
+                <div class="forecast-cards-container" id="forecast-container">
+                    </div>
+            </section>
+        </main>
+        <div id="loading" class="loading-indicator">Loading...</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
